@@ -1,0 +1,20 @@
+close all;
+clear all;
+clc;
+R1=120000;
+R2=1800;
+C1=470*(10^-6);
+C2=2.2*(10^-6);
+P=R1*C1*R2*C2;
+Q=R1*C2+R2*C2;
+%Representacion en funcion de transferencia
+Num=1;
+Den=[P Q 1];
+G=tf(Num,Den);
+[Vo,t]=step(5*G);
+plot(t,Vo,'r',"LineWidth",2);
+title("Metodo Funcion Transferencia");
+ylabel("Voltaje(Volt)");
+xlabel("Tiempo(s)");
+legend("Volataje Vo");
+grid on;
